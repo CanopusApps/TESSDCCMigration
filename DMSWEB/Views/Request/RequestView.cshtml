@@ -1,0 +1,242 @@
+﻿<div class="widget-body">
+    @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
+    {
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row mantable">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Applicant Name</strong></label>
+                                        <input title="Applicant Name" class="form-control" id="ApplicantName" type="text" value="@ViewBag.Data.ApplicantName" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10" style="">
+                                        <label><strong>Applicant Department</strong></label>
+                                        <input title="Applicant Department ID" class="form-control" id="ApplicantDepartmentID" type="text" value="@ViewBag.Data.DepartmentShortName" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Applicant Department Name</strong></label>
+                                        <input title="Applicant Department Name" class="form-control" id="ApplicantDepartmentName" type="text" value="@ViewBag.Data.DepartmentName" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Upload Type</strong></label>
+                                        @if (@ViewBag.Data.Version == "A")
+                                        {
+                                            <input class="form-control" type="text" value="New Document" readonly="readonly">
+                                        }
+                                        else
+                                        {
+                                            <input class="form-control" type="text" value="Existing Document" readonly="readonly">
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10" style="">
+                                        <label><strong>Document Version</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.Version" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Submitted Date</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.CreatedDate" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <label><strong>Plant</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.PlantName" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <label><strong>Document Classification</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.ClassificationName" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Big Category</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.BigCategory" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <label><strong>Small Category</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.SmallCategoryName" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <label><strong>Model</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.Model" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <label><strong>Part</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.Part" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <label><strong>Confidence Level</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.ConfidenceLevel" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Customer</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.Customer" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <label><strong>Certification</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.Certification" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Document</strong></label>
+                                        <div><a href="">@ViewBag.Data.DocumentName</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Document Description</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.DocumentDescription" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Document Author</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.DocumentAuthor" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Subject/Document Name</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.DocumentSubject" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <label><strong>Function</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.Function" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class=" col-lg-10">
+                                        <label><strong>Stage</strong></label>
+                                        <input class="form-control" type="text" value="@ViewBag.Data.Stage" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*<div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="col-lg-11">
+                                            <label><strong>Comments</strong></label>
+                                            <textarea readonly="readonly" class="form-control" rows="4" id="txtComments" style="resize:none;" placeholder="Comments...">@ViewBag.Data.Comments</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>*@
+
+                    @*<div class="row">
+                            <br />
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div style="float:right;margin-right:200px;">
+                                    <button class="btn btn-azure" type="submit" id="btnSubmit">Submit</button>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    }
+</div>

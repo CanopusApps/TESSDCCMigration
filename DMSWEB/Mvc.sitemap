@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+	
+	<mvcSiteMapNode title="Dashboard" controller="Dashboard" action="Index" imageUrl="glyphicon glyphicon-dashboard" description="USER" roles="" >
+		<mvcSiteMapNode title="New Document Upload" controller="DocumentInitiate" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER" roles="USER,DCCADMIN,SUPERADMIN" />
+		<mvcSiteMapNode title="Existing Document Upload" controller="ExistingDocumentUpload" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER" roles="USER,DCCADMIN,SUPERADMIN" />
+		<mvcSiteMapNode title="Inbox" controller="Inbox" action="Index" imageUrl="glyphicon glyphicon-user" description="USER" roles="USER,DCCADMIN,SUPERADMIN,DCCREVIWER,QSADMIN" />
+		<mvcSiteMapNode title="External Documents" controller="ExternalDocuments" action="Index" imageUrl="glyphicon glyphicon-download" description="USER" roles="USER,DCCADMIN,SUPERADMIN,DCCREVIWER,QSADMIN" />
+		<mvcSiteMapNode title="Download Template" controller="DownloadTemplate" action="Index" imageUrl="glyphicon glyphicon-download" description="USER" roles="USER,DCCADMIN,SUPERADMIN,DCCREVIWER,QSADMIN" />
+		<mvcSiteMapNode title="Approval Matrix" controller="ApprovalMatrix" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER" roles="USER,DCCADMIN,SUPERADMIN,DCCREVIWER,QSADMIN" />
+		<mvcSiteMapNode title="Admin" controller="Admin" action="Index" imageUrl="glyphicon glyphicon-tasks" description="USER, DCCADMIN,SUPERADMIN" roles="DCCADMIN,SUPERADMIN" >
+			<!--<mvcSiteMapNode title="Pending Documents" controller="PendingDocuments" area="Admin" action="Index" imageUrl="glyphicon glyphicon-dashboard" description="DCCADMIN,SUPERADMIN" roles="DCCADMIN,SUPERADMIN" />
+			<mvcSiteMapNode title="Template Upload" controller="TemplateDocument" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="DCCADMIN,SUPERADMIN" roles="DCCADMIN,SUPERADMIN" />
+			<mvcSiteMapNode title="Approval Matrix" controller="ApprovalMatrix" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="DCCADMIN,SUPERADMIN" roles="DCCADMIN,SUPERADMIN" />
+			<mvcSiteMapNode title="Users" controller="Users" area="Admin" action="Index" imageUrl="glyphicon glyphicon-user" description="DCCADMIN,SUPERADMIN" roles="DCCADMIN,SUPERADMIN" />
+			<mvcSiteMapNode title="Project Users" controller="ProjectUsers" area="Admin" action="Index" imageUrl="glyphicon glyphicon-user" description="DCCADMIN,SUPERADMIN" roles="DCCADMIN,SUPERADMIN" />-->
+			<mvcSiteMapNode title="Master" controller="Master" action="Index" imageUrl="glyphicon glyphicon-tasks" description="USER, ADMIN,QADM" roles="DCCADMIN,SUPERADMIN" >
+				<mvcSiteMapNode title="Certification" controller="Certification" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+				<mvcSiteMapNode title="Classification" controller="Classification" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+				<mvcSiteMapNode title="Confidence" controller="Confidence" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+				<mvcSiteMapNode title="Customer" controller="Customer" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+				<mvcSiteMapNode title="Department" controller="Department" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+				<mvcSiteMapNode title="Function" controller="Function" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+				<mvcSiteMapNode title="Model" controller="Model" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+				<mvcSiteMapNode title="Part" controller="Part" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+				<mvcSiteMapNode title="Plant" controller="Plant" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+				<mvcSiteMapNode title="Small Category" controller="SmallCategory" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER,DCCADMIN,SUPERADMIN" roles="USER,DCCADMIN,SUPERADMIN" />
+			</mvcSiteMapNode>
+		</mvcSiteMapNode>		
+	</mvcSiteMapNode>
+
+</mvcSiteMap>
