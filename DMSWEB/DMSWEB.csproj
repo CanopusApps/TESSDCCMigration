@@ -55,14 +55,14 @@
     </Reference>
     <Reference Include="DMS.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DMS.BLL\bin\Debug\DMS.BLL.dll</HintPath>
+      <HintPath>..\DMS.BLL\obj\Debug\DMS.BLL.dll</HintPath>
     </Reference>
     <Reference Include="DMS.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DMS.Common\bin\Debug\DMS.Common.dll</HintPath>
     </Reference>
     <Reference Include="DMS.Workflow">
-      <HintPath>..\DMS.BLL\bin\Debug\DMS.Workflow.dll</HintPath>
+      <HintPath>..\DMS.Workflow\bin\Debug\DMS.Workflow.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
@@ -940,6 +940,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DMS.DAL\DMS.DAL.csproj">
+      <Project>{43d70504-b6b4-45f4-b268-8912dca49c89}</Project>
+      <Name>DMS.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
