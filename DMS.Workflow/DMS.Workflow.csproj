@@ -57,7 +57,7 @@
     <Compile Include="Constants\WFConstants.cs" />
     <Compile Include="DAL\WFAdminDAL.cs" />
     <Compile Include="DAL\WorkflowActions.cs" />
-    <Compile Include="Log\LoggerBlock.cs" />
+    <Compile Include="Loggers\LoggerBlock.cs" />
     <Compile Include="Models\ApprovalMatrix.cs" />
     <Compile Include="Models\DocumentApprover.cs" />
     <Compile Include="Models\WFUser.cs" />
