@@ -56,9 +56,37 @@
                                                     <input title="Applicant Department Name" class="form-control" id="ApplicantDepartmentName" type="text" value="@ViewBag.ApplicantDeptName" readonly="readonly">
                                                 </div>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </div>
-                                </div>                                
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Subject/Document Name</strong></label>
+                                                    <input title="Subject" class="form-control" id="Subject" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10" style="">
+                                                    <label><strong>Ext. No</strong></label>
+                                                    <input title="Ext. No" class="form-control" id="extno" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Apply Date</strong></label>
+                                                    <input title="Apply Date" class="form-control" id="applydate" type="date">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-xs-12">
                                         <div class="col-lg-4 col-sm-4 col-xs-12">
@@ -80,7 +108,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                         <div class="col-lg-4 col-sm-4 col-xs-12">
                                             <div class="form-group">
                                                 <div class=" col-lg-10">
@@ -106,6 +134,64 @@
                                         <div class="col-lg-4 col-sm-4 col-xs-12">
                                             <div class="form-group">
                                                 <div class="col-lg-10">
+                                                    <label><strong>Document No</strong><span class="mandatory">*</span></label>
+                                                    <select class="form-control manfield" title="Model" name="Model" data-bv-field="Model" id="ddlModel">
+                                                        <option value="0">Select a value</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Document</strong><span class="mandatory">*</span></label>
+                                                    <input class="form-control manfield" id="DOCFile" name="DOC" type="file" value="" title="Document">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Document Description</strong></label>
+                                                    <input title="Document Description" class="form-control" id="DocumentDescription" name="DocumentDescription" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Version No</strong></label>
+                                                    <input title="Version No" class="form-control" id="VersionNo" name="Version No" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Document Author</strong></label>
+                                                    <input title="Document Author" class="form-control" id="DocumentAuthor" type="text" value="@ViewBag.ApplicantName" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Project Code</strong></label>
+                                                    <input title="Document Author" class="form-control" id="ProjectCode" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
                                                     <label><strong>Model</strong><span class="mandatory">*</span></label>
                                                     <select class="form-control manfield" title="Model" name="Model" data-bv-field="Model" id="ddlModel">
                                                         <option value="0">Select a value</option>
@@ -124,19 +210,40 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-xs-12">
                                         <div class="col-lg-4 col-sm-4 col-xs-12">
                                             <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>PCB No</strong></label>
+                                                    <input title="PCB No" class="form-control" id="Pcbno" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Stage</strong></label>
+                                                    <input title="Stage" class="form-control" id="Stage" name="Stage" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
                                                 <div class="col-lg-10">
-                                                    <label><strong>Confidence Level</strong><span class="mandatory">*</span></label>
-                                                    <select class="form-control manfield" title="Confidence Level" name="ConfidenceLevel" data-bv-field="ConfidenceLevel" id="ddlConfidenceLevel">
+                                                    <label><strong>Doc Author Department</strong><span class="mandatory">*</span></label>
+                                                    <select class="form-control manfield" title="Doc Author Department" name="DocAuthorDepartment" id="Docauthordepartment">
                                                         <option value="0">Select a value</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
                                         <div class="col-lg-4 col-sm-4 col-xs-12">
                                             <div class="form-group">
                                                 <div class=" col-lg-10">
@@ -149,6 +256,71 @@
                                         </div>
                                         <div class="col-lg-4 col-sm-4 col-xs-12">
                                             <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Expiry Date</strong><span class="mandatory">*</span></label>
+                                                    <input type="date" class="form-control manfield" name="ExpiryDate" id="expiryDate" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>CFE Sign Off </strong><span class="mandatory">*</span></label>
+                                                    <div style="display: flex;">
+                                                        <div class="radio" style="flex: 1;">
+                                                            <label>
+                                                                <input type="radio" name="cfeSignOff" id="cfeSignOffNo" value="0">
+                                                                <span class="text">No</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio" style="flex: 2;">
+                                                            <label>
+                                                                <input type="radio" name="cfeSignOff" id="cfeSignOffYes" value="1">
+                                                                <span class="text">Yes</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Building</strong><span class="mandatory">*</span></label>
+                                                    <input type="text" class="form-control manfield" name="Building" id="building" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>Confidentiality Level</strong><span class="mandatory">*</span></label>
+                                                    <select class="form-control manfield" title="Confidence Level" name="ConfidenceLevel" data-bv-field="ConfidenceLevel" id="ddlConfidenceLevel">
+                                                        <option value="0">Select a value</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>Report Type</strong><span class="mandatory">*</span></label>
+                                                    <select class="form-control manfield" title="Report Type" name="ReportType" id="dllReporttype">
+                                                        <option value="0">Select a value</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
                                                 <div class="col-lg-10">
                                                     <label><strong>Certification</strong><span class="mandatory">*</span></label>
                                                     <select class="form-control manfield" title="Certification" name="Certification" data-bv-field="Part" id="ddlCertification">
@@ -157,45 +329,24 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12 col-sm-12 col-xs-12">
                                         <div class="col-lg-4 col-sm-4 col-xs-12">
                                             <div class="form-group">
-                                                <div class=" col-lg-10">
-                                                    <label><strong>Document</strong><span class="mandatory">*</span></label>
-                                                    <input class="form-control manfield" id="DOCFile" name="DOC" type="file" value="" title="Document">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-4 col-xs-12">
-                                            <div class="form-group">
-                                                <div class=" col-lg-10">
-                                                    <label><strong>Document Description</strong></label>
-                                                    <input title="Document Description" class="form-control" id="DocumentDescription" name="DocumentDescription" type="text" value="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-4 col-xs-12">
-                                            <div class="form-group">
-                                                <div class=" col-lg-10">
-                                                    <label><strong>Document Author</strong></label>
-                                                    <input title="Document Author" class="form-control" id="DocumentAuthor" type="text" value="@ViewBag.ApplicantName" readonly="readonly">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                                        <div class="col-lg-4 col-sm-4 col-xs-12">
-                                            <div class="form-group">
-                                                <div class=" col-lg-10">
-                                                    <label><strong>Subject/Document Name</strong></label>
-                                                    <input title="Subject" class="form-control" id="Subject" type="text" value="" readonly="readonly">
+                                                <div class="col-lg-10">
+                                                    <label><strong>Section Head Priority </strong><span class="mandatory">*</span></label>
+                                                    <div style="display: flex;">
+                                                        <div class="radio" style="flex: 1;">
+                                                            <label>
+                                                                <input type="radio" name="Section Head" id="sectionheadNo" value="0">
+                                                                <span class="text">No</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio" style="flex: 2;">
+                                                            <label>
+                                                                <input type="radio" name="Section Head" id="sectionheadYes" value="1">
+                                                                <span class="text">Yes</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -209,30 +360,165 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>One Page Category </strong><span class="mandatory">*</span></label>
+                                                    <select class="form-control manfield" title="One Page Category " name="One Page Category " id="ddlonepagecategory ">
+                                                        <option value="0">Select a value</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-4 col-sm-4 col-xs-12">
                                             <div class="form-group">
                                                 <div class=" col-lg-10">
-                                                    <label><strong>Stage</strong></label>
-                                                    <input title="Stage" class="form-control" id="Stage" name="Stage" type="text" value="">
+                                                    <label><strong>One Page Scope</strong></label>
+                                                    <input title="One Page Scope" class="form-control manfield" id="onepagescope" type="text" value="" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>One Page Process Mode </strong></label>
+                                                    <input title="One Page Process Mode" class="form-control" id="onepageprocessmode" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>One Page Purpose</strong><span class="mandatory">*</span></label>
+                                                    <input title="One Page Purpose" class="form-control" id="onepagepurpose" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>One Page Subject</strong></label>
+                                                    <input title="One Page Subject" class="form-control" id="onepagesubject" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>Product</strong><span class="mandatory">*</span></label>
+                                                    <select class="form-control manfield" title="Product" name="Product" id="ddlProduct">
+                                                        <option value="0">Select a value</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>Associate Document No</strong><span class="mandatory">*</span></label>
+                                                    <input title="Associated Document No" class="form-control" id="associateddocumentno" type="text" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>Site</strong></label>
+                                                    <select class="form-control manfield" title="Site" name="Site" id="ddlSite">
+                                                        <option value="0">Select a value</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class=" col-lg-10">
+                                                    <label><strong>External Document Receive Date</strong><span class="mandatory">*</span></label>
+                                                    <input type="date" class="form-control manfield" name="ExternalDocumentReceiveDate" id="ExternalDocumentReceiveDate" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>Document Created Data</strong><span class="mandatory">*</span></label>
+                                                    <input title="Document Created Data" class="form-control" id="documentcreateddata" type="date" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>e-File Store</strong><span class="mandatory">*</span></label>
+                                                    <div style="display: flex;">
+                                                        <div class="radio" style="flex: 1;">
+                                                            <label>
+                                                                <input type="radio" name="e-File Store" id="filestoreNo" value="0">
+                                                                <span class="text">No</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio" style="flex: 2;">
+                                                            <label>
+                                                                <input type="radio" name="e-File Store" id="filestoreYes" value="1">
+                                                                <span class="text">Yes</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="col-lg-10">
+                                                    <label><strong>Reason Code</strong><span class="mandatory">*</span></label>
+                                                    <div style="display: flex;">
+                                                        <div class="radio" style="flex: 1;">
+                                                            <label>
+                                                                <input type="radio" name="Reason Code" id="ReasonCodeYes" value="1">
+                                                                <span class="text">New</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio" style="flex: 2;">
+                                                            <label>
+                                                                <input type="radio" name="Reason Code" id="ReasonCodeNo" value="0">
+                                                                <span class="text">Upgrade</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-xs-12">
                                         <div class="col-lg-12 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <div class="col-lg-11">
-                                                    <label><strong>Comments</strong></label>
+                                                    <label><strong>Apply Desc</strong></label>
                                                     <textarea class="form-control" rows="4" id="txtComments" style="resize:none;" placeholder="Comments..."></textarea>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="row" id="divApprovalUsers">
@@ -262,15 +548,17 @@
                                 </div>
                                 <div class="row">
                                     <br />
-                                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                                        <div style="float:right;margin-right:200px;">
-                                            <button class="btn btn-azure" type="submit" id="btnSubmit">Submit</button>
+                                    <div class="col-sm-12 ">
+                                        <div style="float:right;margin-right:100px;">
+                                            <button class="btn btn-azure" type="submit" id="btnSubmit" style="margin-right:10px;">Submit</button>
+                                            <button class="btn btn-secondary " type="submit" id="btnDraft" style="margin-right:10px;">Draft</button>
+                                            <button class="btn btn-danger" type="submit" id="btncancel" style="margin-right:10px;">Cancel</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                                </div>
+                            </div>
                 }
             </div>
     </div>

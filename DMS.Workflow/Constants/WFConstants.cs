@@ -30,5 +30,6 @@ namespace DMS.Workflow.Constants
         public static string spGetApprovalMatrixForUser = "spGetApprovalMatrixForUser";
         public static string spGetUserApprovalItemsForReplace = "spGetUserApprovalItemsForReplace";
         public static string spUpdateUserApprovalItemsForReplace = "spUpdateUserApprovalItemsForReplace";
+        public static string spGetUserDetails = "spGetUserDetails";
     }
 }
