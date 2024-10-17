@@ -248,6 +248,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\PendingDocumentsController.cs" />
+    <Compile Include="Controllers\PrintRequestController.cs" />
     <Compile Include="Controllers\Profile2Controller.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\DocumentNoController.cs" />
@@ -845,6 +846,8 @@
     <Content Include="Views\ApproveRequest\WFHistoryView.cshtml" />
     <Content Include="Views\ExternalDocuments\Index.cshtml" />
     <Content Include="Views\Request\RequestView.cshtml" />
+    <Content Include="Views\PrintRequest\Index.cshtml" />
+    <Content Include="Views\PrintRequest\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -7,6 +7,7 @@
 		<mvcSiteMapNode title="New Document Upload" controller="DocumentInitiate" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER" roles="USER,DCCADMIN,SUPERADMIN" />
 		<mvcSiteMapNode title="Existing Document Upload" controller="ExistingDocumentUpload" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER" roles="USER,DCCADMIN,SUPERADMIN" />
 		<mvcSiteMapNode title="Inbox" controller="Inbox" action="Index" imageUrl="glyphicon glyphicon-user" description="USER" roles="USER,DCCADMIN,SUPERADMIN,DCCREVIWER,QSADMIN" />
+		<mvcSiteMapNode title="Print Request" controller="PrintRequest" action="Index" imageUrl="glyphicon glyphicon-print" description="USER" roles="USER,DCCADMIN,SUPERADMIN,DCCREVIWER,QSADMIN" />
 		<mvcSiteMapNode title="External Documents" controller="ExternalDocuments" action="Index" imageUrl="glyphicon glyphicon-download" description="USER" roles="USER,DCCADMIN,SUPERADMIN,DCCREVIWER,QSADMIN" />
 		<mvcSiteMapNode title="Download Template" controller="DownloadTemplate" action="Index" imageUrl="glyphicon glyphicon-download" description="USER" roles="USER,DCCADMIN,SUPERADMIN,DCCREVIWER,QSADMIN" />
 		<mvcSiteMapNode title="Approval Matrix" controller="ApprovalMatrix" area="Admin" action="Index" imageUrl="glyphicon glyphicon-upload" description="USER" roles="USER,DCCADMIN,SUPERADMIN,DCCREVIWER,QSADMIN" />

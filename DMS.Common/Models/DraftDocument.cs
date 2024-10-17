@@ -15,6 +15,18 @@ namespace DMS.Common.Models
         public Guid ApplicantDepartmentID { get; set; }
         public string DepartmentShortName { get; set; }
         public string DepartmentName { get; set; }
+        public Guid SectionID { get; set; }
+        public string SectionCode { get; set; }
+        public string SectionName { get; set; }
+        public Guid ProjectID { get; set; }
+        public string ProjectCode { get; set; }
+        public string ProjectName { get; set; }
+        public Guid ProjectTypeID { get; set; }
+        public string ProjectTypeCode { get; set; }
+        public string ProjectTypeName { get; set; }
+        public Guid DocumentCategoryID { get; set; }
+        public string DocumentCategoryCode { get; set; }
+        public string DocumentCategoryName { get; set; }
         public Guid DocumentPublishID { get; set; }
         public string DocumentNumber { get; set; }
         public string DocumentName { get; set; }
@@ -39,6 +51,7 @@ namespace DMS.Common.Models
         public string Model { get; set; }
         public Guid PartID { get; set; }
         public string Part { get; set; }
+        public Guid WFExecutionID { get; set; }
         public Guid ConfidenceLevelID { get; set; }
         public string ConfidenceLevel { get; set; }
         public Guid CustomerID { get; set; }

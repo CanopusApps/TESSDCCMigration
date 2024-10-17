@@ -119,8 +119,10 @@
     <Compile Include="MailSend.cs" />
     <Compile Include="Models\Confidence.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Part.cs" />
     <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\PrintRequest.cs" />
     <Compile Include="Models\SmallCategory.cs" />
     <Compile Include="Models\Function.cs" />
     <Compile Include="Models\Certification.cs" />

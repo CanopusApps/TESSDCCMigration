@@ -293,6 +293,26 @@ namespace DMS.Common
                 throw ex;
             }
         }
+        public static PrintRequest GetPrintRequestObject(NameValueCollection RequestForm)
+        {
+            Dictionary<string, object> dict2 = new Dictionary<string, object>();
+            foreach (string str in RequestForm.AllKeys)
+            {
+                if (RequestForm[str] != null)
+                {
+                    if (str == "MultipleApprovers")
+                        dict2.Add(str, JsonConvert.DeserializeObject(RequestForm[str]));
+                    else if (str == "MultipleApproversDisplay")
+                        dict2.Add(str, JsonConvert.DeserializeObject(RequestForm[str]));
+                    else dict2.Add(str, RequestForm[str]);
+
+                }
+            }
+            string json = JsonConvert.SerializeObject(dict2);
+            PrintRequest objDoc = JsonConvert.DeserializeObject<PrintRequest>(json);
+            return objDoc;
+        }
+
         public static void DecryptFile(string cryptFile)
         {
             try

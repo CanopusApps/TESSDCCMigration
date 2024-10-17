@@ -22,7 +22,7 @@ namespace DMS.BLL.Component
         DocumentOperations docOperObj = new DocumentOperations();
         QMSAdminDAL objAdminDAL = new QMSAdminDAL();
 
-        //public object TEPLQMS { get; private set; }
+       
         public Object[] GenerateDocumentNo(DraftDocument objDoc)
         {
             Object[] ArrayOfObjects = new Object[3];
@@ -166,7 +166,7 @@ namespace DMS.BLL.Component
                 //}
                 docOperObj.DocumentDescriptionUpdate(objDoc);
 
-                string strResponse = objWF.ExecuteAction(objDoc.ExecutionID, objDoc.CurrentStageID, objDoc.ActionedID, objDoc.Action, objDoc.ActionComments, objDoc.ActionedID);
+                string strResponse = objWF.ExecuteAction(objDoc.WFExecutionID, objDoc.CurrentStageID, objDoc.ActionedID, objDoc.Action, objDoc.ActionComments, objDoc.ActionedID);
                 List<Response> objRes = BindModels.ConvertJSON<Response>(strResponse);
                 if (objRes[0].Status == "A")
                 {
@@ -320,6 +320,37 @@ namespace DMS.BLL.Component
             return result;
         }
 
+        public void SubmitPrintRequest(PrintRequest objRequest)
+        {
+            try
+            {
+                WorkflowActions objWF = new WorkflowActions();
+                DocumentResponse objRes = new DocumentResponse();
+
+                DocumentOperations objOperation = new DocumentOperations();
+                string response = objOperation.CreatePrintRequest(objRequest);
+                string[] respoIDs = response.Split('#');
+
+                Stage objSt = objWF.GetWorkflowStage(QMSConstants.PrintWorkflowID, objRequest.CurrentStageID);
+                if (objSt.IsDocumentLevelRequired)
+                    objRequest.DocumentLevel = GetDocumentLevel(objRequest.DocumentCategoryCode);
+                else
+                    objRequest.DocumentLevel = "";
+                DocumentApprover objApprover = GetDocumentApprover(objRequest.ProjectTypeID, objRequest.ProjectID, objSt.NextStageID, objRequest.DocumentLevel, objRequest.SectionID);
+
+                objWF.CreateActionForPrintRequest(new Guid(respoIDs[0]), new Guid(respoIDs[1]), objSt.NextStageID, objApprover.ApprovalUser, objRequest.RequestorID);
+
+
+                bool blAppLink = objRequest.ProjectTypeCode == "MP" ? true : false;
+                string message = objRequest.RequestorName + " has requested for print of document having Document Number - <b>" + objRequest.DocumentNo + "</b>, and it is waiting for your review. Please check and take an appropriate action as applicable.";
+                PrepareandSendMailForPrint(objApprover.ApprovalUserEmail, new Guid(respoIDs[0]), objRequest.DocumentNo + " - " + objSt.NextStage + " - Print Request ready for Review", message, "ApprovePrintRequest", blAppLink);
+            }
+            catch (Exception ex)
+            {
+                LoggerBlock.WriteTraceLog(ex);
+                throw ex;
+            }
+        }
         private string GetEmailIDs(string emails)
         {
             string emailIDs = string.Empty;
@@ -442,6 +473,38 @@ namespace DMS.BLL.Component
                 LoggerBlock.WriteTraceLog(ex);
             }
             return objDocuments;
+        }
+        public Object[] GetDocumentDetailsForPrintRequest(string DocumentNo)
+        {
+            Object[] ArrayOfObjects = new Object[3];
+            try
+            {
+                string docNumberString = string.Empty;
+                Boolean isMissingApprovals = false;
+                DraftDocument objDocuments = null;
+                string strReturn = docOperObj.GetDocumentDetailsForPrintRequest(DocumentNo);
+                List<DraftDocument> objDraft = BindModels.ConvertJSON<DraftDocument>(strReturn);
+                if (objDraft != null)
+                    objDocuments = objDraft[0];
+
+                string DocumentLevel = GetDocumentLevel(objDocuments.DocumentCategoryCode);
+                WorkflowActions objWFA = new WorkflowActions();
+                List<WFApprovers> objApprovers = objWFA.GetWorkflowApprovers(QMSConstants.PrintWorkflowID, objDocuments.ProjectTypeID, objDocuments.ProjectID, DocumentLevel, objDocuments.SectionID);
+                foreach (WFApprovers wfApp in objApprovers)
+                {
+                    if (string.IsNullOrEmpty(wfApp.ApprovalUser))
+                    { isMissingApprovals = true; break; }
+                }
+                ArrayOfObjects[0] = isMissingApprovals;
+                ArrayOfObjects[1] = objDocuments;
+                ArrayOfObjects[2] = objApprovers;
+            }
+            catch (Exception ex)
+            {
+                LoggerBlock.WriteTraceLog(ex);
+                throw ex;
+            }
+            return ArrayOfObjects;
         }
         public Object[] GetDocumentDetailsByNo(string DocumentNo)
         {
@@ -665,5 +728,47 @@ namespace DMS.BLL.Component
             }
             return objDocList;
         }
+        public PrintRequest GetPrintRequestDetailsByID(string role, Guid loggedInUserID, Guid PrintRequestID)
+        {
+            PrintRequest objDocuments = null;
+            try
+            {
+                string strReturn = docOperObj.GetPrintRequestDetailsByID(role, loggedInUserID, PrintRequestID);
+                List<PrintRequest> objDraft = BindModels.ConvertJSON<PrintRequest>(strReturn);
+                if (objDraft != null)
+                    objDocuments = objDraft[0];
+            }
+            catch (Exception ex)
+            {
+                LoggerBlock.WriteTraceLog(ex);
+                throw ex;
+            }
+            return objDocuments;
+        }
+
+        private void PrepareandSendMailForPrint(string toemail, Guid ID, string subject, string mainMessage, string pageName, bool blAppLink)
+        {
+            try
+            {
+                string emailIDs = GetEmailIDs(toemail);
+
+                StringBuilder body = new StringBuilder();
+                body.Append("Dear User,");
+                body.Append("<br/><br/>");
+                body.Append(mainMessage);
+                body.Append("<br/><br/>");
+                if (blAppLink)
+                    body.Append("Link: <a style='text-decoration:underline' target='_blank' href='" + QMSConstants.WebSiteURL + pageName + "?ID= " + ID + "'>" + "Click here" + "</a>");
+
+                string strMailTemplate = GetApprovalMailTempate();
+                strMailTemplate = strMailTemplate.Replace("@@MailBody@@", body.ToString());
+                CommonMethods.SendMail(emailIDs, subject, strMailTemplate);
+            }
+            catch (Exception ex)
+            {
+                LoggerBlock.WriteTraceLog(ex);
+            }
+        }
+
     }
 }

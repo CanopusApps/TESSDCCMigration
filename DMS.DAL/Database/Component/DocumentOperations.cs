@@ -185,6 +185,53 @@ namespace DMS.DAL.Database.Component
             }
             return objDoc;
         }
+        public string CreatePrintRequest(PrintRequest objRequest)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string strExecutionID = "";
+                using (SqlConnection con = new SqlConnection(QMSConstants.DBCon))
+                {
+                    using (SqlCommand cmd = new SqlCommand(QMSConstants.spCreatePrintRequest, con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@DocumentID", SqlDbType.UniqueIdentifier).Value = objRequest.DocumentID;
+                        cmd.Parameters.Add("@DocumentPublishID", SqlDbType.UniqueIdentifier).Value = objRequest.DocumentPublishID;
+                        cmd.Parameters.Add("@DocumentNo", SqlDbType.NVarChar, 70).Value = objRequest.DocumentNo;
+                        cmd.Parameters.Add("@RevisionNo", SqlDbType.Int).Value = objRequest.RevisionNo;
+                        cmd.Parameters.Add("@WorkflowID", SqlDbType.UniqueIdentifier).Value = objRequest.WorkflowID;
+                        cmd.Parameters.Add("@WFStageID", SqlDbType.UniqueIdentifier).Value = objRequest.CurrentStageID;
+                        cmd.Parameters.Add("@WFStatus", SqlDbType.NVarChar, 50).Value = objRequest.Status;
+                        cmd.Parameters.Add("@PrintLocationID", SqlDbType.UniqueIdentifier).Value = objRequest.PrintLocationID;
+                        cmd.Parameters.Add("@PrintReason", SqlDbType.NVarChar, 500).Value = objRequest.PrintReason;
+                        cmd.Parameters.Add("@RequestorID", SqlDbType.UniqueIdentifier).Value = objRequest.RequestorID;
+                        cmd.Parameters.Add("@WFAction", SqlDbType.NVarChar, 50).Value = objRequest.Action;
+                        cmd.Parameters.Add("@WFActionComments", SqlDbType.NVarChar, -1).Value = objRequest.ActionComments;
+
+                        //con.Open();
+                        //cmd.ExecuteNonQuery();
+                        //con.Close();
+
+                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                        {
+                            sda.Fill(dt);
+                        }
+
+                        if (dt != null)
+                        {
+                            strExecutionID = dt.Rows[0][0].ToString();
+                        }
+                    }
+                }
+                return strExecutionID;
+            }
+            catch (Exception ex)
+            {
+                LoggerBlock.WriteTraceLog(ex);
+                throw ex;
+            }
+        }
         public DraftDocument DocumentPublish(DraftDocument objDoc)
         {
             try
@@ -299,6 +346,37 @@ namespace DMS.DAL.Database.Component
             }
             return strReturn;
         }
+        public string GetPrintRequestDetailsByID(string role, Guid loggedInUserID, Guid PrintRequestID)
+        {
+            string strReturn = string.Empty;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(QMSConstants.DBCon))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(QMSConstants.spGetPrintRequestDetailsByID, con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@PrintRequestID", SqlDbType.UniqueIdentifier).Value = PrintRequestID;
+                        cmd.Parameters.Add("@Role", SqlDbType.NVarChar, 10).Value = role;
+                        cmd.Parameters.Add("@LoginUserID", SqlDbType.UniqueIdentifier).Value = loggedInUserID;
+                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            sda.Fill(dt);
+                            strReturn = dt.Rows[0][0].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerBlock.WriteTraceLog(ex);
+                throw ex;
+            }
+            return strReturn;
+        }
+
         public string GetDocumentDetailsByNo(string DocumentNo)
         {
             string strReturn = string.Empty;
@@ -325,6 +403,34 @@ namespace DMS.DAL.Database.Component
             }
             return strReturn;
         }
+        public string GetDocumentDetailsForPrintRequest(string DocumentNo)
+        {
+            string strReturn = string.Empty;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(QMSConstants.DBCon))
+                {
+                    using (SqlCommand cmd = new SqlCommand(QMSConstants.spGetDocumentDetailsForPrintRequest, con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@DocumentNo", SqlDbType.NVarChar, 50).Value = DocumentNo;
+                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            sda.Fill(dt);
+                            strReturn = dt.Rows[0][0].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerBlock.WriteTraceLog(ex);
+                throw ex;
+            }
+            return strReturn;
+        }
+
         public string GetPublishedDocumentDetailsByID(Guid UserID, Guid DocumentID)
         {
             string strReturn = string.Empty;

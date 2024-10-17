@@ -61,6 +61,7 @@ namespace DMS.Workflow.Business
             CreateAction(ExecutionID, NextWorkflowStageID, NextActionedID, MulitpleApprovers, CreatedID);
             return "";
         }
+
         public string CreateAction(Guid ExecutionID, Guid WorkflowStageID, string ActionedID, string MultipleApprovers, Guid CreatedID)
         {
             return objDALWF.CreateAction(ExecutionID, WorkflowStageID, ActionedID, MultipleApprovers, CreatedID);
@@ -69,6 +70,7 @@ namespace DMS.Workflow.Business
         {
             return objDALWF.ExecuteAction(ExecutionID, WorkflowStageID, ActionedID, WorkflowAction, ActionComments, CreatedID);
         }
+
         public DataTable GetExecutionDetails(Guid ExecutionID)
         {
             return objDALWF.GetExecutionDetails(ExecutionID);
@@ -77,5 +79,17 @@ namespace DMS.Workflow.Business
         {
             return objDALWF.GetPendingActions(ActionedID);
         }
+
+        public string CreateActionForPrintRequest(Guid PrintRequestID, Guid ExecutionID, Guid WorkflowStageID, string ActionedID, Guid CreatedID)
+        {
+            return objDALWF.CreateActionForPrintRequest(PrintRequestID, ExecutionID, WorkflowStageID, ActionedID, CreatedID);
+        }
+        
+
+        public string ExecutePrintRequestAction(Guid ExecutionID, Guid WorkflowStageID, Guid ActionedID, string WorkflowAction, string ActionComments, Guid CreatedID)
+        {
+            return objDALWF.ExecutePrintRequestAction(ExecutionID, WorkflowStageID, ActionedID, WorkflowAction, ActionComments, CreatedID);
+        }
+     
     }
 }

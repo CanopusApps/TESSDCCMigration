@@ -31,5 +31,16 @@ namespace DMS.Workflow.Constants
         public static string spGetUserApprovalItemsForReplace = "spGetUserApprovalItemsForReplace";
         public static string spUpdateUserApprovalItemsForReplace = "spUpdateUserApprovalItemsForReplace";
         public static string spGetUserDetails = "spGetUserDetails";
-    }
+
+        //Stored procedure
+        public static string spCreateActionForPrintRequest = "spCreateActionForPrintRequest";
+        public static string spExecutePrintRequestAction = "spExecutePrintRequestAction";
+
+        public static string spGetWFApprovalMatrixForID = "spGetWFApprovalMatrixForID";
+
+        public static string spUpdateWFApprovalMatrixApprovers = "spUpdateWFApprovalMatrixApprovers";
+
+        public static string spDeleteWFApprovalMatrixItem = "spDeleteWFApprovalMatrixItem";
+    
+}
 }

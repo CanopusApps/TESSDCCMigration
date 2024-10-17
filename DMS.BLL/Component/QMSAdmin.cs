@@ -873,5 +873,32 @@ namespace DMS.BLL.Component
             }
             return strReturn;
         }
+        public List<Location> GetActiveLocations()
+        {
+            List<Location> list = new List<Location>();
+            try
+            {
+                DataTable dt = objAdmin.GetActiveLocations();
+                for (int z = 0; z < dt.Rows.Count; z++)
+                {
+                    Location itm = new Location();
+                    itm.ID = new Guid(dt.Rows[z]["ID"].ToString());
+                    itm.Code = dt.Rows[z]["Code"].ToString();
+                    itm.Title = dt.Rows[z]["Name"].ToString();
+                    if (Convert.ToBoolean(dt.Rows[z]["IsActive"].ToString()) == true)
+                        itm.Active = true;
+                    else
+                        itm.Active = false;
+                    list.Add(itm);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerBlock.WriteTraceLog(ex);
+            }
+            return list;
+        }
+
+
     }
 }

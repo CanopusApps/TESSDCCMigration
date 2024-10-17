@@ -107,5 +107,17 @@ namespace DMS.Common.Constants
         public static string spGetClassificationForPlant = "spGetClassificationForPlant";
         public static string spGetActiveSmallCategories = "spGetActiveSmallCategories";
         public static string spGetModelPartsForSmallCat = "spGetModelPartsForSmallCat";
+
+
+        public static string WebSiteURL = Convert.ToString(ConfigurationManager.AppSettings["websiteURL"]);
+        public static Guid PrintWorkflowID = Guid.Parse(ConfigurationManager.AppSettings["PrintWorkflowID"]);
+        public static string spGetPrintRequestDetailsByID = "spGetPrintRequestDetailsByID";
+        public static string spGetActiveLocations = "spGetActiveLocations";
+        public static string spGetDocumentDetailsForPrintRequest = "spGetDocumentDetailsForPrintRequest";
+
+        
+        public static string spCreatePrintRequest = "spCreatePrintRequest";
     }
 }
+
+
