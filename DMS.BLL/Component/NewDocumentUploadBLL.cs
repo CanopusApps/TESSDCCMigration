@@ -42,9 +42,118 @@ namespace DMS.BLL.Component
             }
             return list;
         }
+        //public object[] GetDropdownsForNewUpload()
+        //{            
+        //    object[] arryofLists = new object[5];
+        //    try
+        //    {
+        //        DataSet ds = objDAL.GetDropdownsForNewUpload();
+        //        List<Plant> list1 = new List<Plant>();
+        //        List<Function> list2 = new List<Function>();
+        //        List<Certification> list3 = new List<Certification>();
+        //        List<Customer> list4 = new List<Customer>();
+        //        List<Confidence> list5 = new List<Confidence>();
+
+        //        for (int z = 0; z < ds.Tables.Count; z++)
+        //        {
+        //            if (z == 0)
+        //            {
+        //                foreach(DataRow dr in ds.Tables[z].Rows)
+        //                {
+        //                    Plant p = new Plant();
+        //                    p.ID = new Guid(dr["ID"].ToString());
+        //                    p.Code = dr["Code"].ToString();
+        //                    p.Name = dr["Name"].ToString();
+        //                    if (dr["IsActive"].ToString().ToLower() == "true")
+        //                        p.IsActive = true;
+        //                    else
+        //                        p.IsActive = false;
+        //                    p.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+        //                    list1.Add(p);
+        //                }                 
+        //            }
+        //            else if (z == 1)
+        //            {
+        //                foreach (DataRow dr in ds.Tables[z].Rows)
+        //                {
+        //                    Function entity = new Function();
+        //                    entity.ID = new Guid(dr["ID"].ToString());
+        //                    entity.Code = dr["Code"].ToString();
+        //                    entity.Name = dr["Name"].ToString();
+        //                    if (dr["IsActive"].ToString().ToLower() == "true")
+        //                        entity.IsActive = true;
+        //                    else
+        //                        entity.IsActive = false;
+        //                    entity.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+        //                    list2.Add(entity);
+        //                }
+        //            }
+        //            else if (z == 2)
+        //            {
+        //                foreach (DataRow dr in ds.Tables[z].Rows)
+        //                {
+        //                    Certification entity = new Certification();
+        //                    entity.ID = new Guid(dr["ID"].ToString());
+        //                    entity.Code = dr["Code"].ToString();
+        //                    entity.Name = dr["Name"].ToString();
+        //                    if (dr["IsActive"].ToString().ToLower() == "true")
+        //                        entity.IsActive = true;
+        //                    else
+        //                        entity.IsActive = false;
+        //                    entity.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+        //                    list3.Add(entity);
+        //                }
+        //            }
+        //            else if (z == 3)
+        //            {
+        //                foreach (DataRow dr in ds.Tables[z].Rows)
+        //                {
+        //                    Customer entity = new Customer();
+        //                    entity.ID = new Guid(dr["ID"].ToString());
+        //                    entity.Code = dr["Code"].ToString();
+        //                    entity.Name = dr["Name"].ToString();
+        //                    if (dr["IsActive"].ToString().ToLower() == "true")
+        //                        entity.IsActive = true;
+        //                    else
+        //                        entity.IsActive = false;
+        //                    entity.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+        //                    list4.Add(entity);
+        //                }
+        //            }
+        //            else if (z == 4)
+        //            {
+        //                foreach (DataRow dr in ds.Tables[z].Rows)
+        //                {
+        //                    Confidence entity = new Confidence();
+        //                    entity.ID = new Guid(dr["ID"].ToString());
+        //                    entity.Code = dr["Code"].ToString();
+        //                    entity.Name = dr["Name"].ToString();
+        //                    if (dr["IsActive"].ToString().ToLower() == "true")
+        //                        entity.IsActive = true;
+        //                    else
+        //                        entity.IsActive = false;
+        //                    entity.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+        //                    list5.Add(entity);
+        //                }
+        //            }
+        //        }
+
+        //        arryofLists[0] = list1;
+        //        arryofLists[1] = list2;
+        //        arryofLists[2] = list3;
+        //        arryofLists[3] = list4;
+        //        arryofLists[4] = list5;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    return arryofLists;
+        //}
         public object[] GetDropdownsForNewUpload()
-        {            
+        {
             object[] arryofLists = new object[5];
+
             try
             {
                 DataSet ds = objDAL.GetDropdownsForNewUpload();
@@ -53,38 +162,44 @@ namespace DMS.BLL.Component
                 List<Certification> list3 = new List<Certification>();
                 List<Customer> list4 = new List<Customer>();
                 List<Confidence> list5 = new List<Confidence>();
-
                 for (int z = 0; z < ds.Tables.Count; z++)
                 {
                     if (z == 0)
                     {
-                        foreach(DataRow dr in ds.Tables[z].Rows)
+                        foreach (DataRow dr in ds.Tables[z].Rows)
                         {
                             Plant p = new Plant();
-                            p.ID = new Guid(dr["ID"].ToString());
+                            if (Guid.TryParse(dr["ID"].ToString(), out Guid plantId))
+                                p.ID = plantId;
+                            else
+                                p.ID = Guid.Empty; 
                             p.Code = dr["Code"].ToString();
                             p.Name = dr["Name"].ToString();
-                            if (dr["IsActive"].ToString().ToLower() == "true")
-                                p.IsActive = true;
+                            p.IsActive = dr["IsActive"].ToString().ToLower() == "true";                        
+                            if (int.TryParse(dr["SeqNo"].ToString(), out int plantSeqNo))
+                                p.SeqNo = plantSeqNo;
                             else
-                                p.IsActive = false;
-                            p.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+                                p.SeqNo = 0; 
                             list1.Add(p);
-                        }                 
+                        }
                     }
+
                     else if (z == 1)
                     {
                         foreach (DataRow dr in ds.Tables[z].Rows)
                         {
                             Function entity = new Function();
-                            entity.ID = new Guid(dr["ID"].ToString());
+                            if (Guid.TryParse(dr["ID"].ToString(), out Guid functionId))
+                                entity.ID = functionId;
+                            else
+                                entity.ID = Guid.Empty;
                             entity.Code = dr["Code"].ToString();
                             entity.Name = dr["Name"].ToString();
-                            if (dr["IsActive"].ToString().ToLower() == "true")
-                                entity.IsActive = true;
+                            entity.IsActive = dr["IsActive"].ToString().ToLower() == "true";
+                            if (int.TryParse(dr["SeqNo"].ToString(), out int functionSeqNo))
+                                entity.SeqNo = functionSeqNo;
                             else
-                                entity.IsActive = false;
-                            entity.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+                                entity.SeqNo = 0;
                             list2.Add(entity);
                         }
                     }
@@ -93,46 +208,57 @@ namespace DMS.BLL.Component
                         foreach (DataRow dr in ds.Tables[z].Rows)
                         {
                             Certification entity = new Certification();
-                            entity.ID = new Guid(dr["ID"].ToString());
+                            if (Guid.TryParse(dr["ID"].ToString(), out Guid certificationId))
+                                entity.ID = certificationId;
+                            else
+                                entity.ID = Guid.Empty;
                             entity.Code = dr["Code"].ToString();
                             entity.Name = dr["Name"].ToString();
-                            if (dr["IsActive"].ToString().ToLower() == "true")
-                                entity.IsActive = true;
+                            entity.IsActive = dr["IsActive"].ToString().ToLower() == "true";
+                            if (int.TryParse(dr["SeqNo"].ToString(), out int certificationSeqNo))
+                                entity.SeqNo = certificationSeqNo;
                             else
-                                entity.IsActive = false;
-                            entity.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+                                entity.SeqNo = 0;
                             list3.Add(entity);
                         }
                     }
+
                     else if (z == 3)
                     {
                         foreach (DataRow dr in ds.Tables[z].Rows)
                         {
                             Customer entity = new Customer();
-                            entity.ID = new Guid(dr["ID"].ToString());
+                            if (Guid.TryParse(dr["ID"].ToString(), out Guid customerId))
+                                entity.ID = customerId;
+                            else
+                                entity.ID = Guid.Empty;
                             entity.Code = dr["Code"].ToString();
                             entity.Name = dr["Name"].ToString();
-                            if (dr["IsActive"].ToString().ToLower() == "true")
-                                entity.IsActive = true;
+                            entity.IsActive = dr["IsActive"].ToString().ToLower() == "true";
+                            if (int.TryParse(dr["SeqNo"].ToString(), out int customerSeqNo))
+                                entity.SeqNo = customerSeqNo;
                             else
-                                entity.IsActive = false;
-                            entity.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+                                entity.SeqNo = 0;
                             list4.Add(entity);
                         }
                     }
+
                     else if (z == 4)
                     {
                         foreach (DataRow dr in ds.Tables[z].Rows)
                         {
                             Confidence entity = new Confidence();
-                            entity.ID = new Guid(dr["ID"].ToString());
+                            if (Guid.TryParse(dr["ID"].ToString(), out Guid confidenceId))
+                                entity.ID = confidenceId;
+                            else
+                                entity.ID = Guid.Empty;
                             entity.Code = dr["Code"].ToString();
                             entity.Name = dr["Name"].ToString();
-                            if (dr["IsActive"].ToString().ToLower() == "true")
-                                entity.IsActive = true;
+                            entity.IsActive = dr["IsActive"].ToString().ToLower() == "true";
+                            if (int.TryParse(dr["SeqNo"].ToString(), out int confidenceSeqNo))
+                                entity.SeqNo = confidenceSeqNo;
                             else
-                                entity.IsActive = false;
-                            entity.SeqNo = Convert.ToInt32(dr["SeqNo"].ToString());
+                                entity.SeqNo = 0;
                             list5.Add(entity);
                         }
                     }
@@ -150,6 +276,8 @@ namespace DMS.BLL.Component
             }
             return arryofLists;
         }
+
+
         public List<Classification> GetClassificationForPlant(Guid parentID)
         {
             List<Classification> list = new List<Classification>();
