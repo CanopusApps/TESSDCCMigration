@@ -206,11 +206,37 @@ function BindStagesForWorkflow(cururl, $ctrl1, workflowID, defaultOption) {
         }
     });
 }
+//function BindDropdown(data, ctrl, defaultOption) {
+//    ctrl.find("option").remove();
+//    ctrl.append('<option title="' + defaultOption + '" value="0">' + defaultOption+'</option>');
+//    for (var i = 0; i < data.length; i++) {
+//        var code = ''; var wfid = '', Condition = ''; var projTypeCode = '';
+//        if (data[i].Code != undefined && data[i].Code != null) {
+//            code = data[i].Code;
+//        }
+//        if (data[i].Condition != undefined && data[i].Condition != null) {
+//            Condition = data[i].Condition;
+//        }
+//        if (data[i].WorkflowID != undefined && data[i].WorkflowID != null) {
+//            wfid = data[i].WorkflowID;
+//        }
+//        if (data[i].ProjectTypeCode != undefined && data[i].ProjectTypeCode != null) {
+//            projTypeCode = data[i].ProjectTypeCode;
+//        }
+//        ctrl.append('<option projType="' + data[i].ProjectType+'" projTypeCode="' + projTypeCode +'" projTypeID="' + data[i].ProjectTypeID +'" workflowID = "' + wfid + '" code="' + code + '" condition="' + Condition + '" title="' + data[i].Title + '" value="' + data[i].ID + '">' + data[i].Title + '</option>');
+//    }
+//}
 function BindDropdown(data, ctrl, defaultOption) {
-    ctrl.find("option").remove();
-    ctrl.append('<option title="' + defaultOption + '" value="0">' + defaultOption+'</option>');
+    ctrl.empty();  
+    ctrl.append('<option value="0">' + defaultOption + '</option>');  
+
     for (var i = 0; i < data.length; i++) {
-        var code = ''; var wfid = '', Condition = ''; var projTypeCode = '';
+        var code = '';
+        var wfid = '';
+        var Condition = '';
+        var projTypeCode = '';
+        var optionAttrs = '';  
+
         if (data[i].Code != undefined && data[i].Code != null) {
             code = data[i].Code;
         }
@@ -223,9 +249,20 @@ function BindDropdown(data, ctrl, defaultOption) {
         if (data[i].ProjectTypeCode != undefined && data[i].ProjectTypeCode != null) {
             projTypeCode = data[i].ProjectTypeCode;
         }
-        ctrl.append('<option projType="' + data[i].ProjectType+'" projTypeCode="' + projTypeCode +'" projTypeID="' + data[i].ProjectTypeID +'" workflowID = "' + wfid + '" code="' + code + '" condition="' + Condition + '" title="' + data[i].Title + '" value="' + data[i].ID + '">' + data[i].Title + '</option>');
+
+        var optionText = data[i].Name ? data[i].Name : data[i].Title ? data[i].Title : 'Unnamed Option'; 
+        for (var prop in data[i]) {
+            if (data[i].hasOwnProperty(prop)) {
+                var value = data[i][prop] ? data[i][prop] : '';
+                optionAttrs += ' ' + prop + '="' + value + '"'; 
+            }
+        }
+        ctrl.append('<option value="' + data[i].ID + '" projType="' + data[i].ProjectType + '" projTypeCode="' + projTypeCode + '" projTypeID="' + data[i].ProjectTypeID + '" workflowID="' + wfid + '" code="' + code + '" condition="' + Condition + '" title="' + optionText + '"' + optionAttrs + '>' + optionText + '</option>');
     }
 }
+
+
+
 function BindDropdownWithValues(data, ctrl, defaultOption) {
     ctrl.find("option").remove();
     ctrl.append('<option title="' + defaultOption + '" value="0">' + defaultOption + '</option>');
